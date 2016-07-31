@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("dng.Dnn.SocialMedia")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Add social media tags for facebook and twitter")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("dotnetgeek")]
 [assembly: AssemblyProduct("dng.Dnn.SocialMedia")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
