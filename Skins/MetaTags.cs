@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.UI.HtmlControls;
+using DotNetNuke.Common;
+using DotNetNuke.Entities.Host;
 using DotNetNuke.UI.Skins;
 
 namespace dng.Dnn.SocialMedia.Skins
@@ -22,11 +24,11 @@ namespace dng.Dnn.SocialMedia.Skins
 
         public bool EnableTwitter { get; set; }
 
+        public string FacebookAppId { get; set; }
+
         public string Sitename { get; set; }
 
         public string TwitterCard { get; set; }
-
-        public string FacebookAppId { get; set; }
 
         #endregion Public Properties
 
@@ -48,6 +50,9 @@ namespace dng.Dnn.SocialMedia.Skins
             AddSingleFacebookMetaTag("og:title", PortalSettings.ActiveTab.Title);
             AddSingleFacebookMetaTag("og:description", PortalSettings.ActiveTab.Description);
             AddSingleFacebookMetaTag("og:url", PortalSettings.ActiveTab.FullUrl);
+
+            if (!string.IsNullOrWhiteSpace(PortalSettings.ActiveTab.IconFileLargeRaw))
+                AddSingleFacebookMetaTag("og:image", GetImageUrl());
 
             if (!string.IsNullOrWhiteSpace(Sitename))
                 AddSingleFacebookMetaTag("og:site_name", Sitename);
@@ -98,7 +103,20 @@ namespace dng.Dnn.SocialMedia.Skins
 
             AddMetaTag("twitter:url", PortalSettings.ActiveTab.FullUrl);
             AddMetaTag("twitter:title", PortalSettings.ActiveTab.Title);
-            AddMetaTag("twitter:description", PortalSettings.ActiveTab.Description);
+
+            if (!string.IsNullOrWhiteSpace(PortalSettings.ActiveTab.Description))
+                AddMetaTag("twitter:description", PortalSettings.ActiveTab.Description);
+
+            if (!string.IsNullOrWhiteSpace(PortalSettings.ActiveTab.IconFileLargeRaw))
+                AddMetaTag("twitter:image", GetImageUrl());
+        }
+
+        private string GetImageUrl()
+        {
+            return string.Concat(
+                Globals.AddHTTP(Host.HostURL),
+                PortalSettings.HomeDirectory,
+                PortalSettings.ActiveTab.IconFileLargeRaw);
         }
 
         #endregion Protected Methods
