@@ -48,7 +48,10 @@ namespace dng.Dnn.SocialMedia.Skins
                 return;
 
             AddSingleFacebookMetaTag("og:title", PortalSettings.ActiveTab.Title);
-            AddSingleFacebookMetaTag("og:description", PortalSettings.ActiveTab.Description);
+
+            if (!string.IsNullOrWhiteSpace(PortalSettings.ActiveTab.Description))
+                AddSingleFacebookMetaTag("og:description", PortalSettings.ActiveTab.Description);
+
             AddSingleFacebookMetaTag("og:url", PortalSettings.ActiveTab.FullUrl);
 
             if (!string.IsNullOrWhiteSpace(PortalSettings.ActiveTab.IconFileLargeRaw))
