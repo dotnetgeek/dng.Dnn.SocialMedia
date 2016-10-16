@@ -24,4 +24,4 @@ To Do's:
 --------
 
 * Build Scripts
-* Creating auf Installation-Package
+* Create Install-Package
